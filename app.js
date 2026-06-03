@@ -50,6 +50,8 @@ app.get("/",(req,res) =>{
 // Index Route
 app.get("/Listings",async(req,res) =>{
     const allListings =  await Listing.find({});
+    // const allListings = await Listing.find({});
+    console.log(allListings[0].image.url);
     res.render("listings/index.ejs",{allListings}) ;
 
 });
