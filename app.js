@@ -22,7 +22,8 @@ async function main() {
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views")) ;
-app.use(express.urlencoded({extended: true})) ;
+// app.use(express.urlencoded({extended: true})) ;
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method")) ;
 app.engine("ejs",ejsMate) ;
 app.use(express.static(path.join(__dirname,"/public")))
@@ -71,8 +72,8 @@ app.get("/Listings/:id",async(req,res) =>{
 
 // Create Route 
 app.post("/Listings",async(req,res) =>{
-    const  newListig = new Listing(req.body.listing) ;
-    await newListig.save();
+    const  newListing = new Listing(req.body.listing) ;
+    await newListing.save();
     res.redirect("/Listings") ;
 
 });

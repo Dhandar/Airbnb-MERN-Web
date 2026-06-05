@@ -9,16 +9,17 @@ const listingsSchema = new Schema({
     description :{
         type : String ,
     },
-    image :{
+    image: {
         filename: {
             type: String,
             default: "listingimage",
         },
-
         url: {
             type: String,
-            default:
-            "https://unsplash.com/photos/sea-turtle-rests-on-sandy-ocean-floor-near-coral-0dyI8zdsDpU",
+            default: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=60",
+            set: (v) => v === "" 
+                ? "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=60" 
+                : v,
         },
     },
     price :{
