@@ -71,10 +71,14 @@ app.get("/Listings/:id",async(req,res) =>{
 });
 
 // Create Route 
-app.post("/Listings",async(req,res) =>{
-    const  newListing = new Listing(req.body.listing) ;
-    await newListing.save();
-    res.redirect("/Listings") ;
+app.post("/Listings",async(req,res,next) =>{
+    try{
+        const  newListing = new Listing(req.body.listing) ;
+        await newListing.save();
+        res.redirect("/Listings") ;
+    }catch(err) {
+        next(err);
+    }
 
 });
 
@@ -99,7 +103,11 @@ app.delete("/Listings/:id" , async(req,res) =>{
     console.log(deletedListing) ;
     res.redirect("/Listings") ;
 
-})
+});
+
+app.use((err,req,res,next) =>{
+    res.send("Something went wrong") ;
+});
 
 app.listen(port,() =>{
     console.log(`Server is listening on port ${port}`);

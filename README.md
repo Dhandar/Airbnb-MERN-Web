@@ -186,8 +186,8 @@ http://localhost:8080/Listings
 ## 👩‍💻 Author
 
 **Sushmita Dhandar**
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-linkedin](https://linkedin.com/in/your-linkedin)
+- GitHub: [@your-username](https://github.com/dhandar)
+- LinkedIn: [your-linkedin](https://linkedin.com/in/sush2000)
 
 ---
 
