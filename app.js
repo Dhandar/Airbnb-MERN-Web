@@ -54,7 +54,9 @@ app.get("/",(req,res) =>{
 });
 
 // Index Route
-app.get("/Listings",wrapAsync(async(req,res) =>{
+app.get(
+    "/Listings",
+    wrapAsync(async(req,res) =>{
     const allListings =  await Listing.find({});
     // const allListings = await Listing.find({});
     console.log(allListings[0].image.url);
@@ -69,7 +71,9 @@ app.get("/Listings/new",(req,res) =>{
 });
 
 // Show Route(READ)
-app.get("/Listings/:id",wrapAsync(async(req,res) =>{
+app.get(
+    "/Listings/:id",
+    wrapAsync(async(req,res) =>{
     let {id} = req.params ;
     const listing = await Listing.findById(id) ;
     res.render("listings/show.ejs",{ listing })
@@ -89,21 +93,27 @@ app.post(
 );
 
 // Edit Route
-app.get("/Listings/:id/edit",wrapAsync(async(req,res) =>{
+app.get(
+    "/Listings/:id/edit",
+    wrapAsync(async(req,res) =>{
     let { id } = req.params ;
     const listing = await Listing.findById(id) ;
     res.render("listings/edit.ejs",{listing}) ;
 }));
 
 // Update route
-app.put("/Listings/:id",wrapAsync(async(req,res) =>{
+app.put(
+    "/Listings/:id",
+    wrapAsync(async(req,res) =>{
     let {id} = req.params ;
     await Listing.findByIdAndUpdate(id,{...req.body.listing})  ;
     res.redirect(`/Listings/${id}`) ;
 })) ;
 
 // Delete Route
-app.delete("/Listings/:id" , wrapAsync(async(req,res) =>{
+app.delete(
+    "/Listings/:id" , 
+    wrapAsync(async(req,res) =>{
     let { id } = req.params ;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing) ;
@@ -121,8 +131,8 @@ app.use((req,res,next) =>{
 
 app.use((err, req, res, next) => {
     let { statuscode = 500, message = "Something went wrong" } = err;
-
-    res.status(statuscode).send(message);
+    res.render("error.ejs",{ err })
+    // res.status(statuscode).send(message);
 });
 
 app.listen(port,() =>{
