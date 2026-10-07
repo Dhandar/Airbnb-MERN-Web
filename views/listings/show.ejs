@@ -28,7 +28,7 @@
             <div class="col-8 offset-3 mb-3">
                 <hr>
                 <h4>Leave a review</h4>
-                <form action="/listings/<%= listing.id %>/review" method="POST" novalidate class="needs-validation">
+                <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
                     <div>
                         <label for="rating" class="form-label">Rating</label>
                         <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
@@ -59,7 +59,7 @@
                                     <p class="card-text"><%= review.comment %></p>
                                     <p class="card-text"><%= review.rating %> Stars</p>
 
-                                    <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE">
+                                    <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
                                         <button class="btn btn-sm btn-dark">Delete</button>
                                     </form>
                             </div>
